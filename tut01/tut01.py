@@ -54,31 +54,40 @@ for x in range(len(file)):
 file["octant"] = octant_list
 
 file.at[2, ' '] = "User Input"
-# file.at[]
+def octant_identification(mod = 5000):
+    file.at[0, "octant ID"]="overall count"
+    file.at[1, "octant ID"] ="Mod {}".format(mod)
+    total_range = math.ceil(len(file)/mod)
+    start=0
+    for i in range(total_range):
 
-list_main = []
-list_main.append('Overall Count')
+        if(i== total_range-1):
+            file.at[i+2, "octant ID"] = "{}-{}".format(start, len(file)-1)
+            file.at[i+2, '1'] = file["octant"].iloc[start:len(file)].value_counts()[1]
+            file.at[i+2, '-1'] = file["octant"].iloc[start:len(file)].value_counts()[-1]
+            file.at[i+2, '2'] = file["octant"].iloc[start:len(file)].value_counts()[2]
+            file.at[i+2, '-2'] = file["octant"].iloc[start:len(file)].value_counts()[-2]
+            file.at[i+2, '3'] = file["octant"].iloc[start:len(file)].value_counts()[3]
+            file.at[i+2, '-3'] = file["octant"].iloc[start:len(file)].value_counts()[-3]
+            file.at[i+2, '4'] = file["octant"].iloc[start:len(file)].value_counts()[4]
+            file.at[i+2, '-4'] = file["octant"].iloc[start:len(file)].value_counts()[-4]
+            continue
+
+        file.at[i+2, "octant ID"] = "{}-{}".format(start, start+mod-1)
+         
+
+        file.at[i+2, '1'] = file["octant"].iloc[start:start+mod].value_counts()[1]
+        file.at[i+2, '-1'] = file["octant"].iloc[start:start+mod].value_counts()[-1]
+        file.at[i+2, '2'] = file["octant"].iloc[start:start+mod].value_counts()[2]
+        file.at[i+2, '-2'] = file["octant"].iloc[start:start+mod].value_counts()[-2]
+        file.at[i+2, '3'] = file["octant"].iloc[start:start+mod].value_counts()[3]
+        file.at[i+2, '-3'] = file["octant"].iloc[start:start+mod].value_counts()[-3]
+        file.at[i+2, '4'] = file["octant"].iloc[start:start+mod].value_counts()[4]
+        file.at[i+2, '-4'] = file["octant"].iloc[start:start+mod].value_counts()[-4]
+        start = start+mod  
 mod = 5000
-total_range = math.ceil(len(file)/mod)
-list_main.append("Mod {}".format(mod))
-
-start = 0
-
-for i in range(total_range):
-    if i == (total_range-1):
-        value = "{}-{}".format(start, len(file))
-        list_main.append(value)
-        continue
-
-    value = "{}-{}".format(start, start+mod-1)
-    list_main.append(value)
-
-    start = start+mod
-
-# print(list_main)
-file["Octant ID"] = list_main
-
-
+octant_identification(mod)
+         
 # counting total count of unique numbers
 file.at[0, '1'] = file["octant"].value_counts()[1]
 file.at[0, '-1'] = file["octant"].value_counts()[-1]
