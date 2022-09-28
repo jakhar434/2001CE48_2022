@@ -261,4 +261,4 @@ def modtransition_count(mod,s):
 modtransition_count(mod,s)
 
 
-file.to_excel("octant_output.xlsx")
+file.to_excel("output_octant_transition_identify.xlsx")
