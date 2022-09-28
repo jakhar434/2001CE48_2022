@@ -13,7 +13,7 @@ average_u = file['U'].mean()
 average_v = file['V'].mean()
 average_w = file['W'].mean()
 # adding this to csv file
-
+print(len(file))
 file.at[0, "U Avg"] = average_u
 file.at[0, "V Avg"] = average_v
 file.at[0, "W Avg"] = average_w
@@ -188,12 +188,17 @@ def modtransition_count(mod=5000):
           # change this value at last by adding mod
         final = initial + mod
         if(final>len(file)):
-            final = len(file)-1
-        
+            final = len(file)-2 #29743
+            print(final)
+        # print(final)
         file.at[tvalue+1, "octant ID"] = "{}-{}".format(initial, final)
+
         if(initial!=0):
             file.at[tvalue+1, "octant ID"] = "{}-{}".format(initial+1, final)
-
+        if(range_total==1):
+            file.at[tvalue+1, "octant ID"] ="{}-{}".format(initial+1, len(file))
+            # print("length of filr is {}".format(len(file)+1))
+        # print(len(file))
         file.at[tvalue+1, "1"] = "To"
         file.at[tvalue+3, " "] = "From"
     
