@@ -1,19 +1,27 @@
 # import pandas as pd
 # df = pd.read_csv (r'octant_output.csv')
 # print("sum of octant is ", df['Octant'].sum());
+
+
 from itertools import count
 # from openpyxl import load_workbook
 import numpy as np
 import math
 from multiprocessing.sharedctypes import Value
 import pandas as pd
+
+
+#change the value of mod here
+mod = 5000
+
+
 file = pd.read_excel("input_octant_transition_identify.xlsx")
 # finding the average value of U, V AND W
 average_u = file['U'].mean()
 average_v = file['V'].mean()
 average_w = file['W'].mean()
 # adding this to csv file
-print(len(file))
+# print(len(file))
 file.at[0, "U Avg"] = average_u
 file.at[0, "V Avg"] = average_v
 file.at[0, "W Avg"] = average_w
@@ -112,7 +120,7 @@ def octant_identification(mod=5000):
         start = start+mod
 
 
-mod = 5000
+
 octant_identification(mod)
 
 # counting total count of unique numbers
@@ -128,7 +136,9 @@ file.at[0, '-4'] = file["octant"].value_counts()[-4]
 
 total_range = math.ceil(len(file)/mod)
 y = total_range+5
+
 file.at[y, "octant ID"] = "overall transition count"
+
 row_index = [1, -1, 2, -2, 3, -3, 4, -4]
 index = ['Count', 1, -1, 2, -2, 3, -3, 4, -4]
 file.at[y+1, "1"] = "To"
@@ -162,7 +172,7 @@ for i in range(len(file)-1):
     # print(value1_index)
     value2_index = row_index.index(value2)
     list_total[value1_index][value2_index] += 1
-s = 14
+s = y+3
 for i in range(8):
     file.at[s, "1"] = list_total[i][0]
     file.at[s, "-1"] = list_total[i][1]
@@ -176,10 +186,10 @@ for i in range(8):
 # mid transition count
 #row_index = [1, -1, 2, -2, 3, -3, 4, -4]
 #index = ['Count', 1, -1, 2, -2, 3, -3, 4, -4]
-
-def modtransition_count(mod=5000):
+# print(s)
+def modtransition_count(mod,s):
     range_total = math.ceil(len(file)/mod)
-    tvalue = 25
+    tvalue = s+3
     initial = 0
     while(range_total>0):
           # change the tvalue at lat by adding 13
@@ -189,7 +199,7 @@ def modtransition_count(mod=5000):
         final = initial + mod
         if(final>len(file)):
             final = len(file)-2 #29743
-            print(final)
+            # print(final)
         # print(final)
         file.at[tvalue+1, "octant ID"] = "{}-{}".format(initial, final)
 
@@ -248,7 +258,7 @@ def modtransition_count(mod=5000):
         range_total = range_total-1
     
 
-modtransition_count(mod)
+modtransition_count(mod,s)
 
 
 file.to_excel("octant_output.xlsx")
