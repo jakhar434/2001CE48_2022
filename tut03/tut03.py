@@ -130,6 +130,6 @@ file.at[7, "Count"] = dict_count[-4]
 end_time = datetime.now()
 print('Duration of Program Execution: {}'.format(end_time - start_time))
 try:
-    file.to_excel("output.xlsx")
+    file.to_excel("output_octant_longest_subsequence.xlsx")
 except:
     print("Error Ocurred ")
