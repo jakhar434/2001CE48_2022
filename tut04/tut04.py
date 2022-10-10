@@ -78,7 +78,32 @@ for z in range(-4, 5):
         else:
             dictionary_count[z] = max(dictionary_count[z], flag+1)
             flag = 0
+
 ## now we have to calculate frequency
+list_1=[]
+list_to_1=[]
+
+list_mod1=[]
+list_to_mod1 =[]
+
+list_2=[]
+list_to_2 =[]
+
+list_mod2=[]
+list_to_mod2 =[]
+
+list_3=[]
+list_to_3=[]
+
+list_mod3=[]
+list_to_mod3=[]
+
+list_4=[]
+list_to_4= []
+
+list_mod4=[]
+list_to_mod4 =[]
+
 dict_count = {1: 0, -1: 0, 2: 0, -2: 0, 3: 0, -3: 0, 4: 0, -4: 0}
 
 for i in range(-4, 5):
@@ -87,12 +112,41 @@ for i in range(-4, 5):
     flag = 0
     for j in range(len(file)-1):
         if (file.at[j, "octant"] == file.at[j+1, "octant"] and file.at[j, "octant"] == i):
-            flag += 1
+            flag += 1 
         else:
+            
             if (flag+1 == dictionary_count[i]):
+                if(i==-4):
+                    print(j+1-flag)
+                    print(j+1)
+                    list_mod4.append(file["Time"][j+1-flag])
+                    list_to_mod4.append(file["Time"][j+1])
+                if(i==4):
+                    list_4.append(file["Time"][j+1-flag])
+                    list_to_4.append(file["Time"][j+1])
+                if(i==-3):
+                    list_mod3.append(file["Time"][j+1-flag])
+                    list_to_mod3.append(file["Time"][j+1])
+                if(i==3):
+                    list_3.append(file["Time"][j+1-flag])
+                    list_to_3.append(file["Time"][j+1])
+                if(i==-2):
+                    list_mod2.append(file["Time"][j+1-flag])
+                    list_to_mod2.append(file["Time"][j+1])
+                if(i==2):
+                    list_2.append(file["Time"][j+1-flag])
+                    list_to_2.append(file["Time"][j+1])
+                if(i==-1):
+                    list_mod1.append(file["Time"][j+1-flag])
+                    list_to_mod1.append(file["Time"][j+1])
+                if(i==1):
+                    list_1.append(file["Time"][j+1-flag])
+                    list_to_1.append(file["Time"][j+1])
                 dict_count[i] += 1
-            flag= 0
 
+            flag= 0
+print(list_to_mod4)
+print(list_mod4)
 file[" "]=" "
 
 file["count"] =" "
