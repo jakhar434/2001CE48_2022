@@ -194,9 +194,36 @@ for i in range(8):
     file.at[spacing_i,"Number"] = Number_list[i]
     file.at[spacing_i, "longest subsequence length"] = dictionary_count[numb_without_string[i]]
     file.at[spacing_i, "Count Number"] = dict_count[numb_without_string[i]]
+
     file.at[1+spacing_i, "Number"] ="Time"
     file.at[1+spacing_i, "longest subsequence length"] = "From"
     file.at[1+spacing_i, "Count Number"] = "To"
+
+    for j in range(dict_count[numb_without_string[i]]):
+        if(numb_without_string[i]==1):
+            file.at[2+spacing_i+j,"longest subsequence length"]=list_1[j]
+            file.at[2+spacing_i+j,"Count Number"]=list_to_1[j]
+        elif(numb_without_string[i]==2):
+            file.at[2+spacing_i+j,"longest subsequence length"]=list_1[j]
+            file.at[2+spacing_i+j,"Count Number"]=list_to_1[j]
+        elif(numb_without_string[i]==3):
+            file.at[2+spacing_i+j,"longest subsequence length"]=list_1[j]
+            file.at[2+spacing_i+j,"Count Number"]=list_to_1[j]
+        elif(numb_without_string[i]==4):
+            file.at[2+spacing_i+j,"longest subsequence length"]=list_1[j]
+            file.at[2+spacing_i+j,"Count Number"]=list_to_1[j]
+        elif(numb_without_string[i]==-1):
+            file.at[2+spacing_i+j,"longest subsequence length"]=list_mod1[j]
+            file.at[2+spacing_i+j,"Count Number"]=list_to_mod1[j]
+        elif(numb_without_string[i]==-2):
+            file.at[2+spacing_i+j,"longest subsequence length"]=list_mod2[j]
+            file.at[2+spacing_i+j,"Count Number"]=list_to_mod2[j]
+        elif(numb_without_string[i]==-3):
+            file.at[2+spacing_i+j,"longest subsequence length"]=list_mod3[j]
+            file.at[2+spacing_i+j,"Count Number"]=list_to_mod3[j]
+        elif(numb_without_string[i]==-4):
+            file.at[2+spacing_i+j,"longest subsequence length"]=list_mod4[j]
+            file.at[2+spacing_i+j,"Count Number"]=list_to_mod4[j]   
     spacing_i += dict_count[numb_without_string[i]]+2
 
 
@@ -207,10 +234,3 @@ try:
     file.to_excel("output_octant_longest_subsequence.xlsx")
 except:
     print("Error Ocurred ")
-def octant_longest_subsequence_count_with_range():
-    pass
-
-
-
-
-octant_longest_subsequence_count_with_range()
