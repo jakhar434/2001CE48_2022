@@ -117,8 +117,8 @@ for i in range(-4, 5):
             
             if (flag+1 == dictionary_count[i]):
                 if(i==-4):
-                    print(j+1-flag)
-                    print(j+1)
+                    
+                    # print(j+1)
                     list_mod4.append(file["Time"][j-flag])
                     list_to_mod4.append(file["Time"][j])
                 if(i==4):
@@ -145,8 +145,7 @@ for i in range(-4, 5):
                 dict_count[i] += 1
 
             flag= 0
-print(list_to_mod4)
-print(list_mod4)
+
 file[" "]=" "
 
 file["count"] =" "
@@ -231,6 +230,6 @@ for i in range(8):
 end_time = datetime.now()
 print('Duration of Program Execution: {}'.format(end_time - start_time))
 try:
-    file.to_excel("output_octant_longest_subsequence.xlsx")
+    file.to_excel("output_octant_longest_subsequence_with_range.xlsx")
 except:
     print("Error Ocurred ")
