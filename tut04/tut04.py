@@ -119,29 +119,29 @@ for i in range(-4, 5):
                 if(i==-4):
                     print(j+1-flag)
                     print(j+1)
-                    list_mod4.append(file["Time"][j+1-flag])
-                    list_to_mod4.append(file["Time"][j+1])
+                    list_mod4.append(file["Time"][j-flag])
+                    list_to_mod4.append(file["Time"][j])
                 if(i==4):
-                    list_4.append(file["Time"][j+1-flag])
-                    list_to_4.append(file["Time"][j+1])
+                    list_4.append(file["Time"][j-flag])
+                    list_to_4.append(file["Time"][j])
                 if(i==-3):
-                    list_mod3.append(file["Time"][j+1-flag])
-                    list_to_mod3.append(file["Time"][j+1])
+                    list_mod3.append(file["Time"][j-flag])
+                    list_to_mod3.append(file["Time"][j])
                 if(i==3):
-                    list_3.append(file["Time"][j+1-flag])
-                    list_to_3.append(file["Time"][j+1])
+                    list_3.append(file["Time"][j-flag])
+                    list_to_3.append(file["Time"][j])
                 if(i==-2):
-                    list_mod2.append(file["Time"][j+1-flag])
-                    list_to_mod2.append(file["Time"][j+1])
+                    list_mod2.append(file["Time"][j-flag])
+                    list_to_mod2.append(file["Time"][j])
                 if(i==2):
-                    list_2.append(file["Time"][j+1-flag])
-                    list_to_2.append(file["Time"][j+1])
+                    list_2.append(file["Time"][j-flag])
+                    list_to_2.append(file["Time"][j])
                 if(i==-1):
-                    list_mod1.append(file["Time"][j+1-flag])
-                    list_to_mod1.append(file["Time"][j+1])
+                    list_mod1.append(file["Time"][j-flag])
+                    list_to_mod1.append(file["Time"][j])
                 if(i==1):
-                    list_1.append(file["Time"][j+1-flag])
-                    list_to_1.append(file["Time"][j+1])
+                    list_1.append(file["Time"][j-flag])
+                    list_to_1.append(file["Time"][j])
                 dict_count[i] += 1
 
             flag= 0
@@ -204,14 +204,14 @@ for i in range(8):
             file.at[2+spacing_i+j,"longest subsequence length"]=list_1[j]
             file.at[2+spacing_i+j,"Count Number"]=list_to_1[j]
         elif(numb_without_string[i]==2):
-            file.at[2+spacing_i+j,"longest subsequence length"]=list_1[j]
-            file.at[2+spacing_i+j,"Count Number"]=list_to_1[j]
+            file.at[2+spacing_i+j,"longest subsequence length"]=list_2[j]
+            file.at[2+spacing_i+j,"Count Number"]=list_to_2[j]
         elif(numb_without_string[i]==3):
-            file.at[2+spacing_i+j,"longest subsequence length"]=list_1[j]
-            file.at[2+spacing_i+j,"Count Number"]=list_to_1[j]
+            file.at[2+spacing_i+j,"longest subsequence length"]=list_3[j]
+            file.at[2+spacing_i+j,"Count Number"]=list_to_3[j]
         elif(numb_without_string[i]==4):
-            file.at[2+spacing_i+j,"longest subsequence length"]=list_1[j]
-            file.at[2+spacing_i+j,"Count Number"]=list_to_1[j]
+            file.at[2+spacing_i+j,"longest subsequence length"]=list_4[j]
+            file.at[2+spacing_i+j,"Count Number"]=list_to_4[j]
         elif(numb_without_string[i]==-1):
             file.at[2+spacing_i+j,"longest subsequence length"]=list_mod1[j]
             file.at[2+spacing_i+j,"Count Number"]=list_to_mod1[j]
