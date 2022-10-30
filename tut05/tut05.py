@@ -226,20 +226,20 @@ octant_name_list =["Octant Name","Internal outward interaction", "External outwa
 count_of_no = []
 for i in range(total_range):
     count_of_no.append(file.at[2+i,"Rank1 Octant ID"])
-for i in range(8):
+for i in range(9):
     file.at[5+total_range+i+1, "1"] = numb_list[i]
     file.at[5+total_range+i+1, "-1"] = octant_name_list[i]
       
-file.at[5+total_range, "2"] = "Count of Rank 1 Mod Values"
+file.at[6+total_range, "2"] = "Count of Rank 1 Mod Values"
 
-file.at[5+total_range+1, "2"] = count_of_no.count(1)
-file.at[5+total_range+2, "2"] = count_of_no.count(-1)
-file.at[5+total_range+3, "2"] = count_of_no.count(2)
-file.at[5+total_range+4, "2"] = count_of_no.count(-2)
-file.at[5+total_range+5, "2"] = count_of_no.count(3)
-file.at[5+total_range+6, "2"] = count_of_no.count(-3)
-file.at[5+total_range+7, "2"] = count_of_no.count(4)
-file.at[5+total_range+8, "2"] = count_of_no.count(-4)
+file.at[6+total_range+1, "2"] = count_of_no.count(1)
+file.at[6+total_range+2, "2"] = count_of_no.count(-1)
+file.at[6+total_range+3, "2"] = count_of_no.count(2)
+file.at[6+total_range+4, "2"] = count_of_no.count(-2)
+file.at[6+total_range+5, "2"] = count_of_no.count(3)
+file.at[6+total_range+6, "2"] = count_of_no.count(-3)
+file.at[6+total_range+7, "2"] = count_of_no.count(4)
+file.at[6+total_range+8, "2"] = count_of_no.count(-4)
 
 
 #This shall be the last lines of the code.
