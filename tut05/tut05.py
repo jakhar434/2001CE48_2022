@@ -119,7 +119,7 @@ count_list =[]
 for i in range(8):
     count_list.append(file.at[0, no_list[i]])
 
-print(count_list)
+# print(count_list)
 dict_count = {count_list[0]: 0, count_list[1]: 0, count_list[2]: 0, count_list[3]: 0, count_list[4]: 0, count_list[5]: 0, count_list[6]: 0, count_list[7]: 0}
 start_1 =8
 
@@ -130,7 +130,7 @@ for i in range(8):
     dict_count[mini] = start_1
     count_list.remove(mini)
     start_1-=1
-print(dict_count)
+# print(dict_count)
 # print the values in xlsx in file
 start_cout =1
 for values in dict_count.values():
@@ -245,7 +245,7 @@ file.at[6+total_range+8, "2"] = count_of_no.count(-4)
 #This shall be the last lines of the code.
 end_time = datetime.now()
 print('Duration of Program Execution: {}'.format(end_time - start_time))
-file.to_excel("octant_output_temp.xlsx")
+file.to_excel("octant_output_ranking_excel.xlsx")
 
 
 
