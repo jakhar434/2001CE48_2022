@@ -217,8 +217,6 @@ def priority_order(mod =5000):
                     file.at[start_cout_1+2, "Rank1 Octant Name"] = "External sweep"
         start_cout_1 +=1
 
-
- 
 priority_order(mod)
 total_range = math.ceil(len(file)/mod)
 numb_list =["Octant ID", 1,  -1, 2, -2, 3, -3, 4, -4]
