@@ -144,7 +144,6 @@ for i in attend_valid_days:
 total_lecture = len(attend_valid_days)
 
 file_all_data["Actual Lecture Taken"] = total_lecture
-
 file_all_data["Total Real"] = ""
 file_all_data["% Attendance"] = ""
 
@@ -158,3 +157,100 @@ for i in student_list.keys():
 file_all_data.to_excel("output/attendance_report_consolidated.xlsx", index = False)
 
 
+###########EMAIL BODY################
+
+def send_mail(fromaddr, frompasswd, toaddr, msg_subject, msg_body, file_path):
+    try:
+        msg = MIMEMultipart()
+        print("[+] Message Object Created")
+    except:
+        print("[-] Error in Creating Message Object")
+        return
+
+    msg['From'] = fromaddr
+
+    msg['To'] = toaddr
+
+    msg['Subject'] = msg_subject
+
+    body = msg_body
+
+    msg.attach(MIMEText(body, 'plain'))
+
+    filename = file_path
+    attachment = open(filename, "rb")
+
+    p = MIMEBase('application', 'octet-stream')
+
+    p.set_payload((attachment).read())
+
+    encoders.encode_base64(p)
+
+    p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+
+    try:
+        msg.attach(p)
+        print("[+] File Attached")
+    except:
+        print("[-] Error in Attaching file")
+        return
+
+    try:
+        s = smtplib.SMTP('stud.iitp.ac.in', 587)
+        print("[+] SMTP Session Created")
+    except:
+        print("[-] Error in creating SMTP session")
+        return
+
+    s.starttls()
+
+    try:
+        s.login(fromaddr, frompasswd)
+        print("[+] Login Successful")
+    except:
+        print("[-] Login Failed")
+
+    text = msg.as_string()
+
+    try:
+        s.sendmail(fromaddr, toaddr, text)
+        print("[+] Mail Sent successfully")
+    except:
+        print('[-] Mail not sent')
+
+    s.quit()
+
+
+def isEmail(x):
+    if ('@' in x) and ('.' in x):
+        return True
+    else:
+        return False
+
+
+FROM_ADDR = "rajat_2001ce48@iitp.ac.in"
+FROM_PASSWD = "putpasswordhere"      # put your email na password
+
+
+Subject = "Attendance Report of 2024 batch"
+Body ='''
+Dear Sir
+
+Please find the attached attendance report of CS384 course.
+
+Thank you
+Rajat Jakhar
+2001CE48
+'''
+
+
+file_path = "output/attendance_report_consolidated.xlsx"
+
+TO_ADDR = "cs384@iitp.ac.in"
+
+send_mail(FROM_ADDR, FROM_PASSWD, TO_ADDR, Subject, Body, file_path)
+
+
+#This shall be the last lines of the code.
+end_time = datetime.now()
+print('Duration of Program Execution: {}'.format(end_time - start_time))
