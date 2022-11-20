@@ -229,7 +229,7 @@ def isEmail(x):
 
 
 FROM_ADDR = "rajat_2001ce48@iitp.ac.in"
-FROM_PASSWD = "putpasswordhere"      # put your email na password
+FROM_PASSWD = "putpasswordhere"      # put your email and password here
 
 
 Subject = "Attendance Report of 2024 batch"
