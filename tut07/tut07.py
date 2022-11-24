@@ -569,7 +569,7 @@ for i in file_name:
     
 
 	###############################
-	# code for adding color
+	# code for adding color an border
 	top = Side(border_style = 'thin', color = '000000')
 	bottom = Side(border_style = 'thin', color = '000000')  
 	left = Side(border_style = 'thin', color = '000000')
@@ -630,6 +630,6 @@ for i in file_name:
 			sheet.cell(row = Row ,column = Column).border = border
 
 	wb.save(FILE_NAME1)
-	
+#this shall be the last line of code
 end_time = datetime.now()
 print('Duration of Program Execution: {}'.format(end_time - start_time))
