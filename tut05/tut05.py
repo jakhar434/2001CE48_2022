@@ -222,6 +222,7 @@ total_range = math.ceil(len(file)/mod)
 numb_list =["Octant ID", 1,  -1, 2, -2, 3, -3, 4, -4]
 octant_name_list =["Octant Name","Internal outward interaction", "External outward interaction", "External Ejection", "internal Ejection", "External inward interaction", "Internal inward interaction", "Internal sweep", "External sweep"]
 count_of_no = []
+
 for i in range(total_range):
     count_of_no.append(file.at[2+i,"Rank1 Octant ID"])
 for i in range(9):
