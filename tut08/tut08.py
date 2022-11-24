@@ -407,6 +407,6 @@ except:
     print("output file not saved")
 
 
-
+#################         final output is saved in file scorecard.csv      ##################
 end_time = datetime.now()
 print('Duration of Program Execution: {}'.format(end_time - start_time))
