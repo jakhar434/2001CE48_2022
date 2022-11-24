@@ -38,8 +38,6 @@ wb = openpyxl.Workbook()
 sheet = wb.active
 
 
-indian_fall_of_wickets = 0  # number of wicket of india team
-pakistan_fall_of_wickets = 0  # number of wicket of pakistan team
 
 out_pak_bat = {}
 ind_bowlers = {}
@@ -53,6 +51,10 @@ pak_byes = 0
 pak_bowlers_total = 0
 
 
+indian_fall_of_wickets = 0  # number of wicket of india team
+pakistan_fall_of_wickets = 0  # number of wicket of pakistan team
+
+
 for l in lst_pak:
     x = l.index(".")
     over_pak = l[0:x+2]
@@ -61,8 +63,10 @@ for l in lst_pak:
 
     if f"{curr_ball[0].strip()}" not in ind_bowlers.keys():
         ind_bowlers[f"{curr_ball[0].strip()}"] = [1, 0, 0, 0, 0, 0, 0]
+
     elif "wide" in flag[1]:
         pass
+
     elif "bye" in flag[1]:
         if "FOUR" in flag[2]:
             pak_byes += 4
@@ -113,7 +117,7 @@ for l in lst_pak:
         ind_bowlers[f"{curr_ball[0].strip()}"][2] += 3
         pak_bats[f"{curr_ball[1].strip()}"][0] += 3
 
-    elif "4 run" in flag[1]:
+    elif "4 run" in flag[1]:  ##########there is no boundary but player get 4 run###########
         ind_bowlers[f"{curr_ball[0].strip()}"][2] += 4
         pak_bats[f"{curr_ball[1].strip()}"][0] += 4
 
@@ -122,12 +126,12 @@ for l in lst_pak:
         pak_bats[f"{curr_ball[1].strip()}"][0] += 4
         pak_bats[f"{curr_ball[1].strip()}"][2] += 1
 
-    elif "SIX" in flag[1]:
+    elif "SIX" in flag[1]:  ######### for six###############
         ind_bowlers[f"{curr_ball[0].strip()}"][2] += 6
         pak_bats[f"{curr_ball[1].strip()}"][0] += 6
         pak_bats[f"{curr_ball[1].strip()}"][3] += 1
 
-    elif "wide" in flag[1]:
+    elif "wide" in flag[1]: ######### for wide balls##########
         if "wides" in flag[1]:
 
             ind_bowlers[f"{curr_ball[0].strip()}"][2] += int(flag[1][1])
@@ -193,6 +197,9 @@ for l in lst_ind:
                 "c" + w[1] + " b " + curr_ball[0])
         elif "Lbw" in flag[1].split("!!")[0]:
             out_ind_bat[f"{curr_ball[1].strip()}"] = ("lbw  b "+curr_ball[0])
+
+
+
 
     if "no run" in flag[1] or "out" in flag[1]:
         pak_bowlers[f"{curr_ball[0].strip()}"][2] += 0
